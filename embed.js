@@ -1,6 +1,4 @@
 
-const DEFAULT_EMBED_COLOR = "FFFFFF";
-
 /**
  * Represents an Embed in a Discord webhook message.
  */
@@ -143,7 +141,7 @@ export class Body {
      */
     set color(str) {this.#color = str}
     
-    #color = DEFAULT_EMBED_COLOR;
+    #color = "FFFFFF";
 }
 
 /**
