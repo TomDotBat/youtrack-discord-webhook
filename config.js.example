@@ -1,6 +1,8 @@
 
 module.exports = {
     WEBHOOK_URL = "https://discord.com/api/webhooks/XXX",
+    SENDER_NAME = "YouTrack",
+    AVATAR_URL = "https://pbs.twimg.com/profile_images/1206619676035469312/oXBhRETv.jpg",
 
     COLOR_POSITIVE = "22C55E",
     COLOR_REGULAR = "3093D1",
