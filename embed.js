@@ -7,17 +7,17 @@ export class Embed {
      * @constructor
      * @param {Author} [author]
      * @param {Body} [body]
-     * @param {Field[]} [fields=[]] - An array of fields.
-     * @param {string[]} [imageUrls=[]] - An array of image URLs to show on the Embed.
-     * @param {string} [thumbnailUrl] - A URL pointing to a thumbnail image.
+     * @param {Field[]} [fields=[]] An array of fields.
+     * @param {string} [imageUrl] An image to show on the Embed.
+     * @param {string} [thumbnailUrl] A URL pointing to a thumbnail image.
      * @param {Footer} [footer]
      */
-	constructor(author, body, fields, imageUrls, thumbnailUrl, footer) {
+	constructor(author, body, fields, imageUrl, thumbnailUrl, footer) {
         this.#author = author;
         this.#body = body;
-        this.#fields = fields;
-        if (imageUrls) this.#imageUrls = imageUrls;
-        if (thumbnailUrl) this.#thumbnailUrl = thumbnailUrl;
+        if (fields) this.#fields = fields;
+        this.#imageUrl = imageUrl;
+        this.#thumbnailUrl = thumbnailUrl;
         this.#footer = footer;
 	}
 
@@ -37,9 +37,9 @@ export class Embed {
     set fields(fields) {this.#fields = fields}
 
     /**
-     * @param {string} imageUrls
+     * @param {string} imageUrl
      */
-    set imageUrls(imageUrls) {this.#imageUrls = imageUrls}
+    set imageUrl(imageUrl) {this.#imageUrl = imageUrl}
 
     /**
      * @param {string} thumbnailUrl
@@ -52,21 +52,96 @@ export class Embed {
     set footer(footer) {this.#footer = footer}
 
     /**
-     * @param {Field} field - The field to add to the Embed fields array. 
+     * @param {Field} field The field to add to the Embed fields array. 
      */
     addField(field) {
         this.#fields.push(field);
     }
 
     /**
-     * @param {string} imageUrl - The image URL to add to the Embed images.
+     * @returns {string} Embed as a JSON object.
      */
-    addImageUrl(imageUrl) {
-        this.#imageUrls.push(imageUrl);
+     toJSON() {
+        let obj = this.#body ? this.#body.getJSONObject() : {};
+
+        obj.author = this.#author;
+        obj.fields = this.#fields;
+        if (this.#imageUrl) obj.image = {url: this.#imageUrl}; //What on earth Discord?
+        if (this.#thumbnailUrl) obj.thumbnail = {url: this.#thumbnailUrl};
+        obj.footer = this.#footer;
+
+        return obj;
     }
 
     #fields = [];
-    #imageUrls = [];
+}
+
+/**
+ * Represents the Body of an Embed in a Discord webhook message.
+ */
+export class Body {
+    /**
+     * @constructor
+     * @param {string} [title] The title of the embed.
+     * @param {string} [description] A description shown below the title.
+     * @param {string} [url] URL of the embed title.
+     * @param {string} [color=FFFFFF] The colour of the embed as a hexadecimal colour value (omit the #).
+     * @param {string} [timestamp] A timestamp to show on the footer.
+     */
+    constructor(title, description, url, color, timestamp) {
+        this.#title = title;
+        this.#description = description;
+        this.#url = url;
+        if (color) this.#color = color;
+        this.#timestamp = timestamp;
+    }
+
+    /**
+     * @param {string} title
+     */
+    set title(title) {this.#title = title}
+
+    /**
+     * @param {string} description
+     */
+    set description(description) {this.#description = description}
+
+    /**
+     * @param {string} url
+     */
+    set url(url) {this.#url = url}
+
+    /**
+     * @param {string} color The colour of the embed as a hexadecimal colour value (omit the #).
+     */
+    set color(color) {this.#color = color}
+
+    /**
+     * @returns {number} The embed colour in decimal.
+     */
+    get color() {
+        return parseInt(this.#color, 16)
+    }
+
+    /**
+     * @param {string} timestamp
+     */
+    set timestamp(timestamp) {this.#timestamp = timestamp}
+
+    /**
+     * @returns {Object} Body as a JSON object.
+     */
+    toJSON() {
+        return {
+            title: this.#title,
+            description: this.#description,
+            url: this.#url,
+            color: this.color,
+            timestamp: this.timestamp
+        };
+    }
+
+    #color = "FFFFFF";
 }
 
 /**
@@ -75,9 +150,9 @@ export class Embed {
 export class Author {
     /**
      * @constructor
-     * @param {string} name - The name of the Author.
-     * @param {string} [url] - URL of the Author's name.
-     * @param {string} [iconUrl] - The icon URL of the Author.
+     * @param {string} name The name of the Author.
+     * @param {string} [url] URL of the Author's name.
+     * @param {string} [iconUrl] The icon URL of the Author.
      */
 	constructor(name, url, iconUrl) {
         this.#name = name;
@@ -88,60 +163,28 @@ export class Author {
     /**
      * @param {string} name
      */
-    set name(str) {this.#name = str}
+    set name(name) {this.#name = name}
 
     /**
      * @param {string} url
      */
-    set url(str) {this.#url = str}
+    set url(url) {this.#url = url}
 
     /**
      * @param {string} iconUrl
      */
-    set iconUrl(str) {this.#iconUrl = str}
-}
+    set iconUrl(iconUrl) {this.#iconUrl = iconUrl}
 
-/**
- * Represents the Body of an Embed in a Discord webhook message.
- */
-export class Body {
     /**
-     * @constructor
-     * @param {string} [title] - The title of the embed.
-     * @param {string} [description] - A description shown below the title.
-     * @param {string} [url] - URL of the embed title.
-     * @param {string} [color=FFFFFF] - The colour of the embed as a hexadecimal colour value (omit the #).
+     * @returns {string} Author as a JSON string.
      */
-    constructor(title, description, url, color) {
-        this.#title = title;
-        this.#description = description;
-        this.#url = url;
-
-        if (!color) return;
-        this.#color = color;
+    toJSON() {
+        return {
+            name: this.#name,
+            url: this.#url,
+            icon_url: this.#iconUrl
+        };
     }
-
-    /**
-     * @param {string} title
-     */
-    set title(str) {this.#title = str}
-
-    /**
-     * @param {string} description
-     */
-    set description(str) {this.#description = str}
-
-    /**
-     * @param {string} url
-     */
-    set url(str) {this.#url = str}
-
-    /**
-     * @param {string} color - The colour of the embed as a hexadecimal colour value (omit the #).
-     */
-    set color(str) {this.#color = str}
-    
-    #color = "FFFFFF";
 }
 
 /**
@@ -150,9 +193,9 @@ export class Body {
 export class Field {
     /**
      * @constructor
-     * @param {string} name - The name of the field.
-     * @param {string} description - The description below the field title.
-     * @param {string} [isInline] - Should the field be displayed inline.
+     * @param {string} name The name of the field.
+     * @param {string} description The description below the field title.
+     * @param {string} [isInline] Should the field be displayed inline.
      */
     constructor(name, description, isInline) {
         this.#name = name;
@@ -163,17 +206,28 @@ export class Field {
     /**
      * @param {string} name
      */
-    set name(str) {this.#name = str}
+    set name(name) {this.#name = name}
 
     /**
      * @param {string} description
      */
-    set description(str) {this.#description = str}
+    set description(description) {this.#description = description}
 
     /**
      * @param {string} isInline
      */
-    set isInline(str) {this.#isInline = str}
+    set isInline(isInline) {this.#isInline = isInline}
+
+    /**
+     * @returns {string} Field as a JSON object.
+     */
+    toJSON() {
+        return {
+            name: this.#name,
+            value: this.#description,
+            inline: this.#isInline
+        };
+    }
 }
 
 /**
@@ -182,28 +236,31 @@ export class Field {
 export class Footer {
     /**
      * @constructor
-     * @param {string} [text] - The text shown on the footer.
-     * @param {string} [timestamp] - A timestamp to show on the footer.
-     * @param {string} [iconUrl] - An icon to show on the footer.
+     * @param {string} [text] The text shown on the footer.
+     * @param {string} [iconUrl] An icon to show on the footer.
      */
-    constructor(text, timestamp, iconUrl) {
+    constructor(text, iconUrl) {
         this.#text = text;
-        this.#timestamp = timestamp;
         this.#iconUrl = iconUrl;
     }
 
     /**
      * @param {string} text
      */
-    set text(str) {this.#text = str}
-
-    /**
-     * @param {string} timestamp
-     */
-    set timestamp(str) {this.#timestamp = str}
+    set text(text) {this.#text = text}
 
     /**
      * @param {string} iconUrl
      */
-    set iconUrl(str) {this.#iconUrl = str}
+    set iconUrl(iconUrl) {this.#iconUrl = iconUrl}
+
+    /**
+     * @returns {string} Footer as a JSON object.
+     */
+    toJSON() {
+        return {
+            text: this.#text,
+            icon_url: this.#iconUrl,
+        };
+    }
 }
