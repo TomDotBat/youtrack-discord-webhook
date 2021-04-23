@@ -1,6 +1,4 @@
 
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/XXX";
-
 const http = require("@jetbrains/youtrack-scripting-api/http");
 
 /**
