@@ -15,7 +15,7 @@ export class Embed {
 	constructor(author, body, fields, imageUrl, thumbnailUrl, footer) {
         this._author = author;
         this._body = body;
-        if (fields) this._fields = fields;
+        this._fields = fields || [];
         this._imageUrl = imageUrl;
         this._thumbnailUrl = thumbnailUrl;
         this._footer = footer;
@@ -74,8 +74,6 @@ export class Embed {
 
         return obj;
     }
-
-    _fields = [];
 }
 
 /**

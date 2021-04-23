@@ -16,7 +16,7 @@ export class Payload {
 		this._message = message;
 		this._username = username;
 		this._avatarUrl = avatarUrl;
-		if (embeds) this._embeds = embeds;
+		this._embeds = embeds || [];
 	}
 
     /**
@@ -75,6 +75,4 @@ export class Payload {
 			console.error(exception);
 		}
 	}
-
-	_embeds = [];
 }
