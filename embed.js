@@ -92,7 +92,7 @@ export class Body {
         this._title = title;
         this._description = description;
         this._url = url;
-        if (color) this._color = color;
+        this._color = color || "FFFFFF";
         this._timestamp = timestamp;
     }
 
@@ -138,11 +138,9 @@ export class Body {
             description: this._description,
             url: this._url,
             color: this.color,
-            timestamp: this.timestamp
+            timestamp: this._timestamp
         };
     }
-
-    _color = "FFFFFF";
 }
 
 /**
