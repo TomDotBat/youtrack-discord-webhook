@@ -1,6 +1,4 @@
 
-const http = require("@jetbrains/youtrack-scripting-api/http");
-
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/XXX";
 
 /**
@@ -66,7 +64,16 @@ export class Payload {
 	 * Sends the payload to a Discord webhook URL
 	 */
 	send(webhookUrl) {
+		let connection = new http.Connection(webhookUrl, null, 2000);
+		connection.addHeader("Content-Type", "application/json");
 
+		try {
+			let response = connection.postSync("", null, JSON.stringify(this));
+			if (!response.isSuccess) console.warn("Discord webhook payload failed to send.\n" + response.toString());
+		}
+		catch(exception) {
+			console.error(exception);
+		}
 	}
 
 	#embeds = [];
