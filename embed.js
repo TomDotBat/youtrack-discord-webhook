@@ -74,7 +74,7 @@ class Embed {
 /**
  * Represents the Author of an Embed in a Discord webhook message.
  */
-class Author {
+export class Author {
     /**
      * @constructor
      * @param {string} name - The name of the Author.
@@ -106,7 +106,7 @@ class Author {
 /**
  * Represents the Body of an Embed in a Discord webhook message.
  */
-class Body {
+export class Body {
     /**
      * @constructor
      * @param {string} [title] - The title of the embed.
@@ -149,7 +149,7 @@ class Body {
 /**
  * Represents a Field of an Embed in a Discord webhook message.
  */
-class Field {
+export class Field {
     /**
      * @constructor
      * @param {string} name - The name of the field.
@@ -181,7 +181,7 @@ class Field {
 /**
  * Represents the Footer of an Embed in a Discord webhook message.
  */
-class Footer {
+export class Footer {
     /**
      * @constructor
      * @param {string} [text] - The text shown on the footer.
