@@ -18,8 +18,8 @@ export class Embed {
         this.#author = author;
         this.#body = body;
         this.#fields = fields;
-        this.#imageUrls = imageUrls;
-        this.#thumbnailUrl = thumbnailUrl;
+        if (imageUrls) this.#imageUrls = imageUrls;
+        if (thumbnailUrl) this.#thumbnailUrl = thumbnailUrl;
         this.#footer = footer;
 	}
 
