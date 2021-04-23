@@ -13,38 +13,38 @@ export class Payload {
      * @param {Embed[]} [embeds] An array of Embeds to send.
      */
 	constructor(message, username, avatarUrl, embeds) {
-		this.#message = message;
-		this.#username = username;
-		this.#avatarUrl = avatarUrl;
-		if (embeds) this.#embeds = embeds;
+		this._message = message;
+		this._username = username;
+		this._avatarUrl = avatarUrl;
+		if (embeds) this._embeds = embeds;
 	}
 
     /**
      * @param {string} message
      */
-	set message(message) {this.#message = message}
+	set message(message) {this._message = message}
 
 	/**
 	 * @param {string} username
 	 */
-	set username(username) {this.#username = username}
+	set username(username) {this._username = username}
 
 	/**
 	 * @param {string} avatarUrl
 	 */
-	set avatarUrl(avatarUrl) {this.#avatarUrl = avatarUrl}
+	set avatarUrl(avatarUrl) {this._avatarUrl = avatarUrl}
 
 	/**
 	 * @param {Embed[]} embeds
 	 */
-	set embeds(embeds) {this.#embeds = embeds}
+	set embeds(embeds) {this._embeds = embeds}
 
     /**
 	 * Adds an Embed to the webhook Payload.
      * @param {Embed} embed The embed to add.
      */
     addEmbed(embed) {
-        this.#embeds.push(embed);
+        this._embeds.push(embed);
     }
 	
     /**
@@ -53,10 +53,10 @@ export class Payload {
      */
 	toJSON() {
 		return {
-			content: this.#message,
-			username: this.#username,
-			avatar_url: this.#avatarUrl,
-			embeds: this.#embeds
+			content: this._message,
+			username: this._username,
+			avatar_url: this._avatarUrl,
+			embeds: this._embeds
 		};
 	}
 
@@ -76,5 +76,5 @@ export class Payload {
 		}
 	}
 
-	#embeds = [];
+	_embeds = [];
 }
