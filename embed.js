@@ -52,7 +52,8 @@ export class Embed {
     set footer(footer) {this.#footer = footer}
 
     /**
-     * @param {Field} field The field to add to the Embed fields array. 
+     * Adds a Field to the Embed.
+     * @param {Field} field The field to add.
      */
     addField(field) {
         this.#fields.push(field);
