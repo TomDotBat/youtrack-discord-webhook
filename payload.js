@@ -22,22 +22,22 @@ export class Payload {
     /**
      * @param {string} message
      */
-	set message(message) {this._message = message}
+	set message(message) {this._message = message;}
 
 	/**
 	 * @param {string} username
 	 */
-	set username(username) {this._username = username}
+	set username(username) {this._username = username;}
 
 	/**
 	 * @param {string} avatarUrl
 	 */
-	set avatarUrl(avatarUrl) {this._avatarUrl = avatarUrl}
+	set avatarUrl(avatarUrl) {this._avatarUrl = avatarUrl;}
 
 	/**
 	 * @param {Embed[]} embeds
 	 */
-	set embeds(embeds) {this._embeds = embeds}
+	set embeds(embeds) {this._embeds = embeds;}
 
     /**
 	 * Adds an Embed to the webhook Payload.
