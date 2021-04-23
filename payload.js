@@ -45,6 +45,18 @@ export class Payload {
     addEmbed(embed) {
         this.#embeds.push(embed);
     }
+	
+    /**
+     * @returns {string} Payload as a JSON object.
+     */
+	toJSON() {
+		return {
+			content: this.#message,
+			username: this.#username,
+			avatar_url: this.#avatarUrl,
+			embeds: this.#embeds
+		};
+	}
 
 	#embeds = [];
 }
