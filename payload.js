@@ -6,7 +6,7 @@ const http = require("@jetbrains/youtrack-scripting-api/http");
 /**
  * Represents an Payload sent by a Discord webhook.
  */
-export class Payload {
+class Payload {
     /**
      * @constructor
      * @param {string} [message] A message that will be put in chat by the webhook.
@@ -78,3 +78,5 @@ export class Payload {
 		}
 	}
 }
+
+module.exports = Payload;
