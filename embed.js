@@ -4,7 +4,7 @@ const DEFAULT_EMBED_COLOR = "FFFFFF";
 /**
  * Represents an Embed in a Discord webhook message.
  */
-class Embed {
+export class Embed {
     /**
      * @constructor
      * @param {Author} [author]
