@@ -1,4 +1,6 @@
 
+const http = require("@jetbrains/youtrack-scripting-api/http");
+
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/XXX";
 
 /**
@@ -40,13 +42,15 @@ export class Payload {
 	set embeds(embeds) {this.#embeds = embeds}
 
     /**
-     * @param {Embed} embed The embed to add to the Embed array. 
+	 * Adds an Embed to the webhook Payload.
+     * @param {Embed} embed The embed to add.
      */
     addEmbed(embed) {
         this.#embeds.push(embed);
     }
 	
     /**
+     * Returns a JSON.stringify friendly object in the format used by Discord.
      * @returns {string} Payload as a JSON object.
      */
 	toJSON() {
@@ -58,5 +62,14 @@ export class Payload {
 		};
 	}
 
+	/**
+	 * Sends the payload to a Discord webhook URL
+	 */
+	send(webhookUrl) {
+
+	}
+
 	#embeds = [];
 }
+
+JSON.st
