@@ -78,5 +78,3 @@ export class Payload {
 
 	#embeds = [];
 }
-
-JSON.st
