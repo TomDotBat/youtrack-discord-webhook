@@ -59,6 +59,7 @@ export class Embed {
     }
 
     /**
+     * Returns a JSON.stringify friendly object in the format used by Discord.
      * @returns {string} Embed as a JSON object.
      */
      toJSON() {
@@ -129,6 +130,7 @@ export class Body {
     set timestamp(timestamp) {this.#timestamp = timestamp}
 
     /**
+     * Returns a JSON.stringify friendly object in the format used by Discord.
      * @returns {Object} Body as a JSON object.
      */
     toJSON() {
@@ -176,6 +178,7 @@ export class Author {
     set iconUrl(iconUrl) {this.#iconUrl = iconUrl}
 
     /**
+     * Returns a JSON.stringify friendly object in the format used by Discord.
      * @returns {string} Author as a JSON string.
      */
     toJSON() {
@@ -219,6 +222,7 @@ export class Field {
     set isInline(isInline) {this.#isInline = isInline}
 
     /**
+     * Returns a JSON.stringify friendly object in the format used by Discord.
      * @returns {string} Field as a JSON object.
      */
     toJSON() {
@@ -255,6 +259,7 @@ export class Footer {
     set iconUrl(iconUrl) {this.#iconUrl = iconUrl}
 
     /**
+     * Returns a JSON.stringify friendly object in the format used by Discord.
      * @returns {string} Footer as a JSON object.
      */
     toJSON() {
