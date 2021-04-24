@@ -42,10 +42,6 @@ const EVENTS = [
 
 exports.rule = entities.Issue.onChange({
     title: "Discord Webhook",
-    guard: (ctx) => {
-        // TODO specify the conditions for executing the rule
-        return true;
-    },
     action: (ctx) => {
         const issue = ctx.issue;
         
