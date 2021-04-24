@@ -53,7 +53,7 @@ exports.rule = entities.Issue.onChange({
         for (let i = 0; i < EVENTS.length; i++) {
             const event = EVENTS[i];
             const issueKey = event.issueKey;
-            if (!((issueKey && issue.isChanged(issueKey)) || (event.customCheck && event.customCheck(issue)))) continue;
+            if (!((issueKey && issue.fields[issueKey] && issue.isChanged(issueKey)) || (event.customCheck && event.customCheck(issue)))) continue;
 
             let oldValue;
             let newValue;
