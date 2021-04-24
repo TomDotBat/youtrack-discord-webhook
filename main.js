@@ -93,7 +93,7 @@ exports.rule = entities.Issue.onChange({
         }
         else {
             body.title = changeCount + " New Changes To " + issue.id;
-            for (let i = 0; i < changes.length; i++) embed.addField(new Field(change.title, change.description, false));
+            for (let i = 0; i < changes.length; i++) embed.addField(new Field(changes[i].title, changes[i].description, false));
         }
 
         body.url = issue.url;
