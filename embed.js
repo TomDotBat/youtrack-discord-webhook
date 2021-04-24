@@ -128,6 +128,13 @@ class Body {
     set timestamp(timestamp) {this._timestamp = timestamp;}
 
     /**
+     * Sets the timestamp of the embed to the time this method is called.
+     */
+    setDateToNow() {
+        this._timestamp = new Date().toISOString();
+    }
+
+    /**
      * Returns a JSON.stringify friendly object in the format used by Discord.
      * @returns {object} Body as a JSON object.
      */
