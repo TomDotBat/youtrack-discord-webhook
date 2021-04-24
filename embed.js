@@ -63,7 +63,7 @@ class Embed {
      * @returns {object} Embed as a JSON object.
      */
     toJSON() {
-        let obj = this._body ? this._body.getJSONObject() : {};
+        let obj = this._body ? this._body.toJSON() : {};
 
         obj.author = this._author;
         if (this._fields.length > 0) obj.fields = this._fields;
