@@ -1,5 +1,8 @@
 
 module.exports = {
+    YOUTRACK_URL: "https://youtrack.jetbrains.com/",
+    SITE_NAME: "My YouTrack",
+
     WEBHOOK_URL: "https://discord.com/api/webhooks/XXX",
     SENDER_NAME: "YouTrack",
     AVATAR_URL: "https://pbs.twimg.com/profile_images/1206619676035469312/oXBhRETv.jpg",
