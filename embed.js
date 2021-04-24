@@ -61,7 +61,7 @@ class Embed {
 
     /**
      * Returns a JSON.stringify friendly object in the format used by Discord.
-     * @returns {string} Embed as a JSON object.
+     * @returns {object} Embed as a JSON object.
      */
      toJSON() {
         let obj = this._body ? this._body.getJSONObject() : {};
@@ -130,7 +130,7 @@ class Body {
 
     /**
      * Returns a JSON.stringify friendly object in the format used by Discord.
-     * @returns {Object} Body as a JSON object.
+     * @returns {object} Body as a JSON object.
      */
     toJSON() {
         return {
@@ -176,7 +176,7 @@ class Author {
 
     /**
      * Returns a JSON.stringify friendly object in the format used by Discord.
-     * @returns {string} Author as a JSON string.
+     * @returns {object} Author as a JSON string.
      */
     toJSON() {
         return {
@@ -220,7 +220,7 @@ class Field {
 
     /**
      * Returns a JSON.stringify friendly object in the format used by Discord.
-     * @returns {string} Field as a JSON object.
+     * @returns {object} Field as a JSON object.
      */
     toJSON() {
         return {
@@ -257,7 +257,7 @@ class Footer {
 
     /**
      * Returns a JSON.stringify friendly object in the format used by Discord.
-     * @returns {string} Footer as a JSON object.
+     * @returns {object} Footer as a JSON object.
      */
     toJSON() {
         return {

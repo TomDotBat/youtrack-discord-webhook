@@ -49,7 +49,7 @@ class Payload {
 	
     /**
      * Returns a JSON.stringify friendly object in the format used by Discord.
-     * @returns {string} Payload as a JSON object.
+     * @returns {object} Payload as a JSON object.
      */
 	toJSON() {
 		return {
