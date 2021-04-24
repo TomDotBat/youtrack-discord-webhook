@@ -1,4 +1,3 @@
-
 /**
  * Represents an Embed in a Discord webhook message.
  */
@@ -63,7 +62,7 @@ class Embed {
      * Returns a JSON.stringify friendly object in the format used by Discord.
      * @returns {object} Embed as a JSON object.
      */
-     toJSON() {
+    toJSON() {
         let obj = this._body ? this._body.getJSONObject() : {};
 
         obj.author = this._author;
