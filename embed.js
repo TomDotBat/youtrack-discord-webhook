@@ -1,4 +1,3 @@
-
 /**
  * Represents an Embed in a Discord webhook message.
  */
