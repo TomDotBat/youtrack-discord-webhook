@@ -77,4 +77,4 @@ class Payload {
 	}
 }
 
-module.exports = Payload;
+module.exports = {Payload};
