@@ -66,7 +66,7 @@ class Embed {
         let obj = this._body ? this._body.getJSONObject() : {};
 
         obj.author = this._author;
-        obj.fields = this._fields;
+        if (this._fields.length > 0) obj.fields = this._fields;
         if (this._imageUrl) obj.image = {url: this._imageUrl}; //What on earth Discord?
         if (this._thumbnailUrl) obj.thumbnail = {url: this._thumbnailUrl};
         obj.footer = this._footer;
