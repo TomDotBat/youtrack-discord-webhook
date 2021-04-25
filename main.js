@@ -61,7 +61,7 @@ exports.rule = entities.Issue.onChange({
             embed.body = body;
 
             const user = ctx.currentUser;
-            embed.author = new Author(user.visibleName, CONFIG.YOUTRACK_URL + "/users/" + user.login, user.avatarUrl);
+            embed.author = new Author(user.visibleName, CONFIG.YOUTRACK_URL + "/users/" + user.login);
 
             embed.footer = new Footer(CONFIG.SITE_NAME + " " + issue.project.name);
 
@@ -83,7 +83,7 @@ exports.rule = entities.Issue.onChange({
             embed.body = body;
 
             const user = ctx.currentUser;
-            embed.author = new Author(user.visibleName, CONFIG.YOUTRACK_URL + "/users/" + user.login, user.avatarUrl);
+            embed.author = new Author(user.visibleName, CONFIG.YOUTRACK_URL + "/users/" + user.login);
 
             embed.footer = new Footer(CONFIG.SITE_NAME + " " + issue.project.name);
 
@@ -146,7 +146,7 @@ exports.rule = entities.Issue.onChange({
         embed.body = body;
 
         const user = ctx.currentUser;
-        embed.author = new Author(user.visibleName, CONFIG.YOUTRACK_URL + "/users/" + user.login, user.avatarUrl);
+        embed.author = new Author(user.visibleName, CONFIG.YOUTRACK_URL + "/users/" + user.login);
 
         embed.footer = new Footer(CONFIG.SITE_NAME + " " + issue.project.name);
 
